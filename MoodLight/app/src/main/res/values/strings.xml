@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">MoodLight</string>
+    <string name="conn">연결하기</string>
+    <string name="start">시작</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="nothing"> </string>
+    <string name="random_set">랜덤 컬러</string>
+    <string name="red_set">빨강색</string>
+    <string name="orange_set">주황색</string>
+    <string name="blue_set">파랑색</string>
+    <string name="green_set">초록색</string>
+    <string name="custom_set">색 고르기</string>
+</resources>
