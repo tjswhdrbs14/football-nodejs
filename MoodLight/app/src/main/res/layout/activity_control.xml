@@ -1,93 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ControlActivity">
 
-    <TextView
-        android:id="@+id/mTitle"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="@string/app_name"
-        android:textSize="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg" />
+
+    <ImageButton
+        android:id="@+id/btnRed"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="277dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="35dp"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/red"
+        app:layout_constraintBottom_toTopOf="@+id/btnGreen"
+        app:layout_constraintEnd_toStartOf="@+id/btnOrange"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="326dp"
-        android:background="@color/colorRed"
-        android:text="@string/red_set"
-        android:textColor="#ffffff"
+    <ImageButton
+        android:id="@+id/btnOrange"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="277dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="35dp"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/orange"
+        app:layout_constraintBottom_toTopOf="@+id/btnBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnRed"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnGreen"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="74dp"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/green"
+        app:layout_constraintBottom_toTopOf="@+id/btnSelect"
+        app:layout_constraintEnd_toStartOf="@+id/btnBlue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnRed" />
+
+    <ImageButton
+        android:id="@+id/btnBlue"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="285dp"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/blue"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/orange_set"
-        android:textColor="#ffffff"
-        android:background="#ff7f00"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toTopOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@+id/btnGreen"
+        app:layout_constraintTop_toBottomOf="@+id/btnOrange" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnSelect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginEnd="23dp"
-        android:text="@string/green_set"
-        android:textColor="#ffffff"
-        android:background="#008000"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="49dp"
-        android:text="@string/blue_set"
-        android:textColor="#ffffff"
-        android:background="#3232ff"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="43dp"
-        android:layout_marginEnd="23dp"
-        android:text="@string/random_set"
-        app:layout_constraintEnd_toStartOf="@+id/button6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
+        android:layout_marginBottom="163dp"
+        android:background="#00ff0000"
+        android:fontFamily="@font/okbifont"
         android:text="@string/custom_set"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button5"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
-</android.support.constraint.ConstraintLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnGreen" />
+</androidx.constraintlayout.widget.ConstraintLayout>

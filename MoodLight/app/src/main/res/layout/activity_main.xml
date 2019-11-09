@@ -1,51 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/mTitle"
+    <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="200dp"
-        android:text="@string/app_name"
-        android:textSize="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/btConn"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg" />
 
     <Button
         android:id="@+id/mStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="116dp"
+        android:layout_marginTop="53dp"
+        android:background="#00ff0000"
+        android:fontFamily="@font/okbifont"
         android:text="@string/start"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btConn" />
 
     <Button
         android:id="@+id/btConn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
+        android:layout_marginTop="49dp"
+        android:background="#00ff0000"
+        android:fontFamily="@font/okbifont"
         android:text="@string/conn"
-        app:layout_constraintBottom_toTopOf="@+id/mStart"
-        app:layout_constraintStart_toStartOf="@+id/mStart" />
+        android:textColor="#ffffff"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/mStart"
+        app:layout_constraintTop_toBottomOf="@+id/deviceName" />
 
     <TextView
         android:id="@+id/checkConn"
-        android:layout_width="200dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="347dp"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/deviceName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="268dp"
+        android:fontFamily="@font/okbifont"
+        android:text="@string/disconnected"
+        android:textColor="@color/colorRed"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/deviceName"
         app:layout_constraintStart_toStartOf="@+id/deviceName"
         app:layout_constraintTop_toTopOf="parent" />
@@ -54,12 +61,14 @@
         android:id="@+id/deviceName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="299dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/okbifont"
         android:text="@string/nothing"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/btConn"
         app:layout_constraintStart_toStartOf="@+id/btConn"
         app:layout_constraintTop_toBottomOf="@+id/checkConn" />
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,5 @@
 package com.example.moodlight;
 
-import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -8,10 +7,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
-import android.os.SystemClock;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.core.content.ContextCompat;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,8 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     List<String> mListPairedDevices;
 
     public Handler mBluetoothHandler;
-    ConnectedBluetoothThread mThreadConnectedBluetooth;
+    public ConnectedBluetoothThread mThreadConnectedBluetooth;
     BluetoothDevice mBluetoothDevice;
     BluetoothSocket mBluetoothSocket;
     BackPressCloseHandler backPressCloseHandler;
@@ -58,13 +55,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mContext = this;
-
-        mTitle = findViewById(R.id.mTitle);
         mCheckConn = findViewById(R.id.checkConn);
         mDeviceName = findViewById(R.id.deviceName);
         mStart = findViewById(R.id.mStart);
         mBTConn = findViewById(R.id.btConn);
 
+        /*--------- BluetoothAdapter와 BluetoothHandler 객체 생성 --------*/
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         mBluetoothHandler = new Handler(){
             public void handleMessage(android.os.Message msg){
@@ -78,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-        backPressCloseHandler = new BackPressCloseHandler(this);
+
+        backPressCloseHandler = new BackPressCloseHandler(this);                        //뒤로 버튼 클릭시 종료 객체 생성
 
         mBTConn.setOnClickListener(new Button.OnClickListener(){
             @Override
@@ -93,15 +90,18 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /*--------- 뒤로 버튼 클릭시 종료 메소드 호출 ---------*/
     @Override
     public void onBackPressed() {
         backPressCloseHandler.onBackPressed();
     }
 
+    /*--------- ControlActivity로 전환 ---------*/
     private void startControl() {
         startActivity(new Intent(this, ControlActivity.class));
     }
 
+    /*--------- 연결할 수 있는 블루투스 Device 검색 및 연결 ---------*/
     public void listPairedDevices(){
         if(mBluetoothAdapter.isEnabled()){
             mPairedDevices = mBluetoothAdapter.getBondedDevices();
@@ -136,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /*--------- 선택된 블루투스 Device 연결 Process ---------*/
     void connectSelectedDevice(String selectedDeviceName) {
         for(BluetoothDevice tempDevice : mPairedDevices){
             if(selectedDeviceName.equals(tempDevice.getName())){
