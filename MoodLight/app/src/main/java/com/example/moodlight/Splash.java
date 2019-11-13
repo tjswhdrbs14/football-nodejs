@@ -3,6 +3,7 @@ package com.example.moodlight;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 
 public class Splash extends AppCompatActivity {
 
@@ -11,12 +12,15 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        try{
-            Thread.sleep(3000);
-        }catch(InterruptedException e){
-            e.printStackTrace();
+        Handler handler = new Handler();
+        handler.postDelayed((Runnable) new splashHandler(), 3000);
+
+    }
+
+    private class splashHandler implements Runnable{
+        public void run(){
+            startActivity(new Intent(getApplication(), MainActivity.class));
+            Splash.this.finish();
         }
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
     }
 }

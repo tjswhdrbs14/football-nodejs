@@ -24,10 +24,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-import static java.lang.Thread.sleep;
-
 public class MainActivity extends AppCompatActivity {
-    TextView mTitle;
     TextView mCheckConn;
     TextView mDeviceName;
     Button mStart;
@@ -38,16 +35,16 @@ public class MainActivity extends AppCompatActivity {
     List<String> mListPairedDevices;
 
     public Handler mBluetoothHandler;
-    public ConnectedBluetoothThread mThreadConnectedBluetooth;
+    public static ConnectedBluetoothThread mThreadConnectedBluetooth;
     BluetoothDevice mBluetoothDevice;
     BluetoothSocket mBluetoothSocket;
-    BackPressCloseHandler backPressCloseHandler;
+    public static BackPressCloseHandler backPressCloseHandler;
 
 //    final static int BT_REQUEST_ENABLE = 1;
     final static int BT_MESSAGE_READ = 2;
     final static int BT_CONNECTING_STATUS = 3;
     final static UUID BT_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
-    public static Context mContext;
+    public static Context mContext;                                                                 //BT Thread와 연결해주는 변수
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         for(BluetoothDevice tempDevice : mPairedDevices){
             if(selectedDeviceName.equals(tempDevice.getName())){
                 mBluetoothDevice = tempDevice;
+                mDeviceName.setText(tempDevice.toString());
                 mCheckConn.setText(getString(R.string.connected));
                 int blueColor = ContextCompat.getColor(getApplicationContext(), R.color.colorBlue);
                 mCheckConn.setTextColor(blueColor);

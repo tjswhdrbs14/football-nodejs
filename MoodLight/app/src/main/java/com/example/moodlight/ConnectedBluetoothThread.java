@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ public class ConnectedBluetoothThread extends Thread {
     private final BluetoothSocket mmSocket;
     private final InputStream mmInStream;
     private final OutputStream mmOutStream;
+    private static final String TAG = "MyTAG";
     private Activity activity;
 
     public ConnectedBluetoothThread(BluetoothSocket socket){
@@ -54,8 +56,10 @@ public class ConnectedBluetoothThread extends Thread {
         }
     }
     public void write(String str){
+//        str += " ";
         byte[] bytes = str.getBytes();
         try{
+            Log.d(TAG, "RGB= " + bytes);
             mmOutStream.write(bytes);
         }catch (IOException e){
             Toast.makeText(activity, "데이터 전송 중 오류가 발생하였습니다.", Toast.LENGTH_LONG).show();
