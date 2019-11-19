@@ -10,6 +10,11 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetEncoder;
 
 import static com.example.moodlight.MainActivity.BT_MESSAGE_READ;
 
@@ -56,11 +61,27 @@ public class ConnectedBluetoothThread extends Thread {
         }
     }
     public void write(String str){
-//        str += " ";
+//        byte[] bytes = new byte[30];
+//        try {
+//            Charset b = Charset.forName("utf-8");
+//            CharsetEncoder encoder = b.newEncoder();
+//
+//            ByteBuffer buffer = encoder.encode(CharBuffer.wrap(str));
+//            byte[] c = new byte[buffer.remaining()];
+//            buffer.get(c);
+//            System.arraycopy(c, 0, bytes, 0, c.length);
+//        }catch (CharacterCodingException e){
+//            Log.e(TAG, "Encoding Failed");
+//        }
+
         byte[] bytes = str.getBytes();
         try{
-            Log.d(TAG, "RGB= " + bytes);
-            mmOutStream.write(bytes);
+
+            for(int i=0; i<bytes.length; i++) {
+                Log.d(TAG, "RGB= " + bytes[i]);
+                mmOutStream.write(bytes[i]);
+//                bytes[i] = '\0';
+            }
         }catch (IOException e){
             Toast.makeText(activity, "데이터 전송 중 오류가 발생하였습니다.", Toast.LENGTH_LONG).show();
         }

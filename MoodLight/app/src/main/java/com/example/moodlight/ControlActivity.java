@@ -39,28 +39,28 @@ public class ControlActivity extends AppCompatActivity {
         red.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
-                data = "255 0 0 ";
+                data = "255 0 0 255 )";
                 mThreadConnectedBluetooth.write(data);
             }
         });
         orange.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
-                data = "255 50 0 ";
+                data = "255 50 0 255 )";
                 mThreadConnectedBluetooth.write(data);
             }
         });
         green.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
-                data = "0 255 0 ";
+                data = "0 255 0 255 )";
                 mThreadConnectedBluetooth.write(data);
             }
         });
         blue.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
-                data = "0 0 255 ";
+                data = "0 0 255 255 )";
                 mThreadConnectedBluetooth.write(data);
             }
         });
@@ -68,10 +68,27 @@ public class ControlActivity extends AppCompatActivity {
         choice.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v) {
-                builder.show();
+                chooseColorPicker();
             }
         });
+    }
 
+    @Override
+    public void onBackPressed() {
+        backPressCloseHandler.onBackPressed();
+    }
+
+    String convertArrayToString(int[] arr){
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int value: arr) {
+            stringBuilder.append(value);
+            stringBuilder.append(" ");
+        }
+        stringBuilder.append("255)");
+        return stringBuilder.toString();
+    }
+
+    void chooseColorPicker(){
         builder = new ColorPickerDialog.Builder(this,
                 AlertDialog.THEME_DEVICE_DEFAULT_DARK);
         builder.setTitle("Choose Color");
@@ -82,7 +99,7 @@ public class ControlActivity extends AppCompatActivity {
                     public void onColorSelected(ColorEnvelope envelope, boolean fromUser) {
 //                        setLayoutColor(envelope);
                         int[] arr = envelope.getArgb();
-                        data = ConvertArrayToString(arr);
+                        data = convertArrayToString(arr);
                         mThreadConnectedBluetooth.write(data);
                     }
                 });
@@ -93,22 +110,8 @@ public class ControlActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
-        builder.attachAlphaSlideBar(true);                                                          // 투명도 슬라이드바
-        builder.attachBrightnessSlideBar(true);                                                     // 명도 슬라이드바
-
-    }
-
-    @Override
-    public void onBackPressed() {
-        backPressCloseHandler.onBackPressed();
-    }
-
-    String ConvertArrayToString(int[] arr){
-        StringBuilder stringBuilder = new StringBuilder();
-        for (int value: arr) {
-            stringBuilder.append(value);
-            stringBuilder.append(" ");
-        }
-        return stringBuilder.toString();
+        builder.attachAlphaSlideBar(false);                                                          // 투명도 슬라이드바
+        builder.attachBrightnessSlideBar(false);                                                     // 명도 슬라이드바
+        builder.show();
     }
 }

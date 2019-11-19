@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Handler;
 
 import androidx.core.content.ContextCompat;
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 startControl();
             }
         });
+
     }
 
     /*--------- 뒤로 버튼 클릭시 종료 메소드 호출 ---------*/
@@ -126,6 +128,8 @@ public class MainActivity extends AppCompatActivity {
                 mCheckConn.setText(getString(R.string.disconnected));
                 int redColor = ContextCompat.getColor(getApplicationContext(), R.color.colorRed);
                 mCheckConn.setTextColor(redColor);
+                mStart.setEnabled(false);
+                mStart.setTextColor(Color.parseColor("#808080"));
                 Toast.makeText(getApplicationContext(), "페어링된 장치가 없습니다.", Toast.LENGTH_LONG).show();
             }
         }else{
@@ -142,6 +146,8 @@ public class MainActivity extends AppCompatActivity {
                 mCheckConn.setText(getString(R.string.connected));
                 int blueColor = ContextCompat.getColor(getApplicationContext(), R.color.colorBlue);
                 mCheckConn.setTextColor(blueColor);
+                mStart.setEnabled(true);
+                mStart.setTextColor(Color.parseColor("#ffffff"));
 
                 break;
             }
