@@ -1,0 +1,23 @@
+<!-- create_match.ejs -->
+
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <h1>새로운 경기 추가</h1>
+        <form method="POST" action="/create_match/write">
+            <label>상대팀 이름: </label>
+                <input type="text" name="userName"><br/>
+            <label>장소: </label>
+                <input type="text" name="userPlace"><br/>
+            <label>시간: </label>
+                <input type="date" name="userDate">
+                <input type="time" name="userTime">
+                <br/>
+            <label>승, 무, 패: </label>
+                <input type="text" name="userWin"><br/>
+            <input type="Submit">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!-- players.ejs -->
+
+<html>
+    <head>
+        <title><%= title %></title>
+        <meta charset = "utf-8">
+    </head>
+    <body>
+            <a href="match">
+                <input type="button" value="경기 정보">
+            </a>
+            &nbsp;
+            <a href="record">
+                <input type="button" value="기록실">
+            </a>
+            <br/><br/>
+            
+        <h1>선수단 정보</h1>
+        <table border="2">
+            <tr>
+                <th>등번호</th>
+                <th>이름</th>
+                <th>경기수</th>
+                <th>득점</th>
+                <th>도움</th>
+                <th>MOM</th>
+            </tr>
+            <%
+            for(var i = 0; i<rows.length; i++)
+            {
+            %>
+            <tr>
+                <td><%= rows[i].id %></td>
+                <td><%= rows[i].name %></td>
+                <td><%= rows[i].matchNum %></td>
+                <td><%= rows[i].goal %></td>
+                <td><%= rows[i].assist %></td>
+                <td><%= rows[i].MOM %></td>
+            </tr>
+            <%
+            }
+            %>
+        </table>
+
+        <br/>
+        <a href="create_player">
+            <input type="button" value="선수 추가">
+        </a>
+    </body>
+</html>

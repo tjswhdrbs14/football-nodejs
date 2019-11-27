@@ -1,0 +1,17 @@
+<!-- create_player.ejs -->
+
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <h1>새로운 선수 추가</h1>
+        <form method="POST" action="/create_player/write">
+            <label>등번호: </label>
+                <input type="number" name="userId"><br/>
+            <label>이름: </label>
+                <input type="text" name="userName"><br/>
+            <input type="Submit">
+        </form>
+    </body>
+</html>
