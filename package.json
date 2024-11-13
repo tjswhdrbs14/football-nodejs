@@ -10,9 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.20.1",
+    "body-parser": "^1.20.3",
     "ejs": "^3.1.10",
-    "express": "4.19.2",
+    "express": "4.21.1",
     "express-session": "^1.17.0",
     "moment": "^2.29.4",
     "mysql": "^2.18.0"
